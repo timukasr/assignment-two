@@ -1,0 +1,34 @@
+<header>
+	<h1><%= @post.title %></h1>
+	<p class="author">By: <b><%= @post.name %></b></p>
+
+	<%= link_to 'Edit Post', edit_post_path(@post) %> |
+	<%= link_to 'Back to Posts', posts_path %>
+</header>
+
+<section>
+	<p id="notice"><%= notice %></p>
+	 
+	<p>
+	  <%= @post.content %>
+	</p>
+
+	<p>
+	  <b>Tags:</b>
+	  <%= join_tags(@post) %>
+	</p>
+
+	<section class="comments">
+			<h2>Comments <%= link_to 'Delete all comments', destroy_all_post_comments_path(@post),
+				:confirm => 'Are you sure?', :method => :delete, :class => 'delete' %></h2>
+		<div>
+			<%= render @post.comments %>
+		</div>
+		<% if !@post.closed %>
+	 		<br>
+			<h2>Add a comment:</h2>
+			<%= render "comments/form" %>
+		<% end %>
+	</section>
+ 
+</section>

@@ -1,0 +1,11 @@
+<article>
+	<p><%= comment.body %></p>
+	<p class="author">
+		<%= comment.commenter %>
+		<%= link_to 'Delete', [comment.post, comment],
+			:confirm => 'Are you sure?',
+			:method => :delete,
+			:class => 'delete'
+		%>
+	</p>
+</article>
